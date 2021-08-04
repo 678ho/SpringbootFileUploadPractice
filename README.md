@@ -13,6 +13,11 @@
 ![3](https://user-images.githubusercontent.com/43158428/128118145-205c4ec7-016a-46b5-80fc-bc1b12437394.PNG)
 ![4](https://user-images.githubusercontent.com/43158428/128118725-0b0e63f3-2594-459a-b0ac-92badfd2ad03.PNG)
 
+4. insertMember Test Method result
+
+![5](https://user-images.githubusercontent.com/43158428/128119670-719be4ff-9601-49b8-8a50-f9212db2dd7e.PNG)
+
+
 
 
 
