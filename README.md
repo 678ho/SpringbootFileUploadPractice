@@ -5,8 +5,12 @@
 ![1](https://user-images.githubusercontent.com/43158428/128112228-1715a1f9-5a46-463e-b9cc-ad82ad0d01c4.PNG)
 
 2. m_member, review 테이블 생성
+
 ![2](https://user-images.githubusercontent.com/43158428/128114384-36cbc257-3ba1-4d3d-a954-5d0bc2b57298.PNG)
 
+3. insertMovie Test Method
+
+![3](https://user-images.githubusercontent.com/43158428/128118145-205c4ec7-016a-46b5-80fc-bc1b12437394.PNG)
 
 
 
