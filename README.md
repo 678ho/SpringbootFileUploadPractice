@@ -25,6 +25,11 @@
 
 ![13](https://user-images.githubusercontent.com/43158428/128285665-c06ec5e9-280a-48e8-86bf-5d92b21cb814.PNG)
 
+7. testGetMovieWithAll 테스트
+
+![14](https://user-images.githubusercontent.com/43158428/128288503-980709de-5b08-4816-a69a-e6c35ccd6bc8.PNG)
+
+
 
 
 
