@@ -17,7 +17,9 @@
 
 ![5](https://user-images.githubusercontent.com/43158428/128119670-719be4ff-9601-49b8-8a50-f9212db2dd7e.PNG)
 
+5. insertMovieReview 테스트
 
+![12](https://user-images.githubusercontent.com/43158428/128284009-48c3fbd7-4f80-40da-83e3-487ed0c2ad1a.PNG)
 
 
 
