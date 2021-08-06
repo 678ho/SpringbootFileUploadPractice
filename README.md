@@ -29,6 +29,11 @@
 
 ![14](https://user-images.githubusercontent.com/43158428/128288503-980709de-5b08-4816-a69a-e6c35ccd6bc8.PNG)
 
+8.testGetMovieReviews() 테스트
+
+![12](https://user-images.githubusercontent.com/43158428/128497447-bf7bd20e-36e8-4a5a-a2bd-63a568bd1420.PNG)
+
+
 
 
 
