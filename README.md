@@ -72,9 +72,35 @@ Spring Data JPA
 영화와 이미지들은 같은 시점에 insert처리가 되어야함. 때문에 Movie객체를 먼저 save후 PK에 해당하는 mno값이 할당되어, 이를 사용해 영화의 이미지를 추가시켜준다.
 (이미지들은 최대 5개까지 임의로 저장되고 많은 이미지를 처리할 경우가 있으므로 임의의 수로 테스트 수행)
 
-2. insertMember()
+2. insertMembers()
 
 테스트 코드를 이용해서 총 100명의 Member 추가.
+
+3. insertMovieReviews()
+
+200개의 MovieReview를 저장하고 영화의 번호와 회원은 임의의 값으로 현재 데이터베이스에 존재하는 값으로 생성 처리.
+
+영화의 평점과 리뷰의 내용을 작성해서 MovieReview 객체를 생성해 저장.
+
+4. testGetMovieWithAll()
+
+리뷰와 관련된 내용 처리는 left outer join을 이용.
+
+리뷰와 조인한 후에 count(), avg() 함수를 이용하는데 영화 이미지별로 group by 부분에 영화 이미지별로 그룹을 만들어서 이미지 개수만큼 데이터를 생성.
+
+5. testGetMovieReviews()
+
+@EntityGraph는 엔티티의 특정한 속성을 같이 로딩하도록 표시하는 어노테이션.
+
+JPA를 이용하는 경우에는 연관 관계의 FATCH속성값은 LAZY로 지정하는것이 일반적임.
+
+@EntityGraph는 이러한 상황에서 특정 기능을 수행할 때만 EAGER로딩을 하도록 지정할수있음.
+
+6. testDeleteMember()
+
+ReviewRepository에서 @Query를 이용해서 where절을 지정하게되면 한 번에 review테이블에서 삭제가됨.
+
+(기존에는 where조건절에 member_mid 칼럼을 이용해서 3개의 데이터를 한번에 삭제하는것처럼 보이지만 실제로는 review 테이블에서 3번 반복적으로 실행된 후 m_member 테이블을 삭제함.)
 ```
 
 ### 테스트는 이런 식으로 작성하시면 됩니다
