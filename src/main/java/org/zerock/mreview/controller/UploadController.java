@@ -10,11 +10,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadController {
 
     @PostMapping("/uploadAjax")
-    public void uploadFile(MultipartFile[] uploadFiles) {
-        for(MultipartFile uploadFile : uploadFiles) {
+    public void uploadFile(MultipartFile[] uploadFiles){
+        for(MultipartFile uploadFile : uploadFiles){
             String originalName = uploadFile.getOriginalFilename();
-            String fileName = originalName.substring(originalName.lastIndexOf("\\") + 1);
-            log.info("fileName: " + fileName);
-        }
+            String fileName = originalName.substring(originalName.lastIndexOf("\\")+1);
+
+            log.info("fileName:" + fileName);
+        }       // end info
     }
 }
