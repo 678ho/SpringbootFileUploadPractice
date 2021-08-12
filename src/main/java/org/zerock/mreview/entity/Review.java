@@ -9,7 +9,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = {"movie","member"})
+@ToString(exclude = {"movie", "member"})
 public class Review extends BaseEntity {
 
     @Id
@@ -25,5 +25,13 @@ public class Review extends BaseEntity {
     private int grade;
 
     private String text;
+
+    public void changeGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public void changeText(String text) {
+        this.text = text;
+    }
 
 }

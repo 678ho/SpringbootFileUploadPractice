@@ -6,8 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @ToString(exclude = "movie")
 public class MovieImage {
@@ -24,4 +24,5 @@ public class MovieImage {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Movie movie;
+
 }
