@@ -103,3 +103,10 @@ public class UploadController {
         return result;
     }
 }
+/* 추가된 getFile() 메서드는 URL 인코딩된 파일 이름을 인자로 받아서 해당 파일을 byte[]로 만들어서 브라우저로 전송
+
+ * 파일의 확장자에 따라서 브라우저에 전송하는 MIME타입이 달라져야 하는 문제는 Files.probeContentType()을 이용해서 처리
+ * 파일 데이터의 처리는 FileCopyUtils를 이용해서 처리.
+
+ /
+ */
