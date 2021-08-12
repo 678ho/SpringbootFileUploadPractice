@@ -1,6 +1,7 @@
 package org.zerock.mreview.controller;
 
 import lombok.extern.log4j.Log4j2;
+import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,81 +33,89 @@ public class UploadController {
     private String uploadPath;
 
     @PostMapping("/uploadAjax")
-    public ResponseEntity<List<UploadResultDTO>> uploadFile(MultipartFile[] uploadFiles){
+    public ResponseEntity<List<UploadResultDTO>> uploadFile(MultipartFile[] uploadFiles) {
+
         List<UploadResultDTO> resultDTOList = new ArrayList<>();
 
-        for(MultipartFile uploadFile : uploadFiles){
-            if(uploadFile.getContentType().startsWith("image") == false){
+        for (MultipartFile uploadFile : uploadFiles) {
+
+            if(uploadFile.getContentType().startsWith("image") == false) {
                 log.warn("this file is not image type");
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
 
             String originalName = uploadFile.getOriginalFilename();
-            String fileName = originalName.substring(originalName.lastIndexOf("\\")+1);
+            String fileName = originalName.substring(originalName.lastIndexOf("\\") + 1);
 
-            log.info("fileName:" + fileName);
+            log.info("fileName: " + fileName);
 
             String folderPath = makeFolder();
 
             String uuid = UUID.randomUUID().toString();
 
-            String saveName = uploadPath = File.separator + folderPath + File.separator + uuid + "_" + fileName;
+            String saveName = uploadPath + File.separator + folderPath + File.separator + uuid + "_" + fileName;
 
             Path savePath = Paths.get(saveName);
 
-            try{
+            try {
                 uploadFile.transferTo(savePath);
-            }catch (IOException e){
+
+                String thumbnailSaveName = uploadPath + File.separator + folderPath + File.separator + "s_" + uuid + "_" + fileName;
+
+                File thumbnailFile = new File(thumbnailSaveName);
+
+                Thumbnailator.createThumbnail(savePath.toFile(), thumbnailFile, 100, 100);
+
+                resultDTOList.add(new UploadResultDTO(fileName, uuid, folderPath));
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         return new ResponseEntity<>(resultDTOList, HttpStatus.OK);
     }
 
-    private String makeFolder() {
-        String str = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-
-        String folderPath = str.replace("/", File.separator);
-
-        File uploadPathFolder = new File(uploadPath, folderPath);
-
-        if(uploadPathFolder.exists() == false) {
-            uploadPathFolder.mkdirs();
-        }
-        return folderPath;
-    }
-
     @GetMapping("/display")
-    public ResponseEntity<byte[]> getFiles(String fileName) {
+    public ResponseEntity<byte[]> getFile(String fileName, String size) {
+
         ResponseEntity<byte[]> result = null;
 
-        try{
+        try {
             String srcFileName = URLDecoder.decode(fileName, "UTF-8");
-            log.info("fileName:" + srcFileName);
+
+            log.info("filename: " + srcFileName);
 
             File file = new File(uploadPath + File.separator + srcFileName);
-            log.info("file:" + file);
 
-            HttpHeaders headers = new HttpHeaders();
+            if (size != null && size.equals("1")) {
+                file = new File(file.getParent(), file.getName().substring(2));
+            }
 
-            //MIME TYPE 정리
-            headers.add("Content-Type", Files.probeContentType(file.toPath()));
+            log.info("file: " + file);
 
-            //FILE DATA 처리
-            result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
+            HttpHeaders header = new HttpHeaders();
 
+            header.add("Content-type", Files.probeContentType(file.toPath()));
 
-        }catch (Exception e){
-            log.error(e.getMessage());
+            result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+        } catch(Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return result;
     }
+
+    private String makeFolder() {
+
+        String str = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+
+        String folderPath = str.replace("//", File.separator);
+
+        File uploadPathFolder = new File(uploadPath, folderPath);
+
+        if (uploadPathFolder.exists() == false) {
+            uploadPathFolder.mkdirs();
+        }
+
+        return folderPath;
+    }
 }
-/* 추가된 getFile() 메서드는 URL 인코딩된 파일 이름을 인자로 받아서 해당 파일을 byte[]로 만들어서 브라우저로 전송
-
- * 파일의 확장자에 따라서 브라우저에 전송하는 MIME타입이 달라져야 하는 문제는 Files.probeContentType()을 이용해서 처리
- * 파일 데이터의 처리는 FileCopyUtils를 이용해서 처리.
-
- /
- */
