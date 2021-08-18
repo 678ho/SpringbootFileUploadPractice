@@ -107,7 +107,10 @@ ReviewRepository에서 @Query를 이용해서 where절을 지정하게되면 한
 
 (기존에는 where조건절에 member_mid 칼럼을 이용해서 3개의 데이터를 한번에 삭제하는것처럼 보이지만 실제로는 review 테이블에서 3번 반복적으로 실행된 후 m_member 테이블을 삭제함.)
 
-7. 업로드 파일 데이터의 처리과정.
+```
+
+### 업로드 파일 데이터의 처리과정.
+
   -1 파일 업로드가 되면 <li>태그 내에 태그들이 생성된다.
   ![1](https://user-images.githubusercontent.com/43158428/129832630-ec13da81-a829-4334-8c81-02ac5e6fe115.JPG)
 
@@ -118,14 +121,6 @@ ReviewRepository에서 @Query를 이용해서 where절을 지정하게되면 한
   -4 MovieService에서 MovieImageDTO들은 Movie 엔티티 객체 내에 MovieImage로 처리된다.
   
   -5 JPA에 의해서 save 처리 후 데이터베이스에 저장된다.
-
-```
-
-### 테스트는 이런 식으로 작성하시면 됩니다
-
-```
-test 폴더 아래에 적절한 폴더를 생성후 폴더안에 테스트클래스 작성 후 테스트 실행.
-```
 
 
 ## License / 라이센스
