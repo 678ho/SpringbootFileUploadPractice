@@ -2,7 +2,9 @@ package org.zerock.mreview.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.stereotype.Controller;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.mreview.dto.MovieDTO;
@@ -13,6 +15,7 @@ import org.zerock.mreview.repository.MovieRepository;
 
 import java.util.List;
 import java.util.Map;
+
 
 @Service
 @Log4j2
@@ -25,17 +28,24 @@ public class MovieServiceImpl implements MovieService{
 
     @Transactional
     @Override
-    public Long register(MovieDTO movieDTO){
+    public Long register(MovieDTO movieDTO) {
+        log.info("movieDTO: " + movieDTO);
 
         Map<String, Object> entityMap = dtoToEntity(movieDTO);
         Movie movie = (Movie) entityMap.get("movie");
         List<MovieImage> movieImageList = (List<MovieImage>) entityMap.get("imgList");
+
+        log.info("entityMap: " + entityMap.toString());
+        log.info("movie: " + entityMap.get("movie"));
 
         movieRepository.save(movie);
 
         movieImageList.forEach(movieImage -> {
             imageRepository.save(movieImage);
         });
+
         return movie.getMno();
     }
+
+
 }
