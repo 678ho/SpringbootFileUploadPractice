@@ -110,19 +110,31 @@ ReviewRepository에서 @Query를 이용해서 where절을 지정하게되면 한
 ```
 
 ### 업로드 파일 데이터의 처리과정.
-```
+
   -1 파일 업로드가 되면 <li>태그 내에 태그들이 생성된다.
   
   ![1](https://user-images.githubusercontent.com/43158428/129832630-ec13da81-a829-4334-8c81-02ac5e6fe115.JPG)
 
   -2 Submit을 클릭하면 <form>태그 내에 태그들이 생성된다.
   
+  ![2](https://user-images.githubusercontent.com/43158428/129832808-1a94276e-d203-4f5e-b894-01aeaea80f3c.JPG)
+
+  
   -3 MovieController에서 POST 방식으로 전달된 데이터들은 MovieImageDTO로 수집된다.
+  
+  ![3](https://user-images.githubusercontent.com/43158428/129832817-4b451248-04d4-4e33-b424-779b923820f1.JPG)
+
   
   -4 MovieService에서 MovieImageDTO들은 Movie 엔티티 객체 내에 MovieImage로 처리된다.
   
+  ![4](https://user-images.githubusercontent.com/43158428/129832825-44fc801f-36bd-4f56-9a1d-39efa05cdc13.JPG)
+
+  
   -5 JPA에 의해서 save 처리 후 데이터베이스에 저장된다.
-```
+  
+  ![5](https://user-images.githubusercontent.com/43158428/129832837-ec11eb6e-dbd1-4a35-aaef-3137d8969dda.JPG)
+
+
 
 ## License / 라이센스
 
