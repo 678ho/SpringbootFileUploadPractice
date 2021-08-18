@@ -38,6 +38,11 @@
 ![13](https://user-images.githubusercontent.com/43158428/128500784-f97fcd71-5ac7-435b-b9dc-8bdff7a2c9f0.PNG)
 ![132](https://user-images.githubusercontent.com/43158428/128500793-7aea33b1-debb-40a9-890c-36fdf8d15e56.PNG)
 
+10.register 후 데이터베이스 적용
+
+![1423](https://user-images.githubusercontent.com/43158428/129831855-c1269532-73df-449d-89dc-34a7ada2a690.JPG)
+
+
 
 
 
