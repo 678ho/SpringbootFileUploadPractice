@@ -108,16 +108,16 @@ ReviewRepository에서 @Query를 이용해서 where절을 지정하게되면 한
 (기존에는 where조건절에 member_mid 칼럼을 이용해서 3개의 데이터를 한번에 삭제하는것처럼 보이지만 실제로는 review 테이블에서 3번 반복적으로 실행된 후 m_member 테이블을 삭제함.)
 
 7. 업로드 파일 데이터의 처리과정.
+  -1 파일 업로드가 되면 <li>태그 내에 태그들이 생성된다.
+  ![1](https://user-images.githubusercontent.com/43158428/129832630-ec13da81-a829-4334-8c81-02ac5e6fe115.JPG)
 
-![1](https://user-images.githubusercontent.com/43158428/129832273-b549cd3e-7d71-4a22-a87f-c030140d78ee.JPG)
-
-![2](https://user-images.githubusercontent.com/43158428/129832285-dc693e1f-6b73-4e0c-af07-8843d63e5445.JPG)
-
-![3](https://user-images.githubusercontent.com/43158428/129832291-bb96df9a-a443-46d7-ab44-2ea933a9278a.JPG)
-
-![4](https://user-images.githubusercontent.com/43158428/129832304-70a8fb13-cc47-4e5f-8e01-7803a3a6ba5f.JPG)
-
-![5](https://user-images.githubusercontent.com/43158428/129832310-848dbb85-0538-4046-b8ab-1c01ba9da261.JPG)
+  -2 Submit을 클릭하면 <form>태그 내에 태그들이 생성된다.
+  
+  -3 MovieController에서 POST 방식으로 전달된 데이터들은 MovieImageDTO로 수집된다.
+  
+  -4 MovieService에서 MovieImageDTO들은 Movie 엔티티 객체 내에 MovieImage로 처리된다.
+  
+  -5 JPA에 의해서 save 처리 후 데이터베이스에 저장된다.
 
 ```
 
