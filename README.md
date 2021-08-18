@@ -38,6 +38,11 @@
 ![13](https://user-images.githubusercontent.com/43158428/128500784-f97fcd71-5ac7-435b-b9dc-8bdff7a2c9f0.PNG)
 ![132](https://user-images.githubusercontent.com/43158428/128500793-7aea33b1-debb-40a9-890c-36fdf8d15e56.PNG)
 
+10.register 후 데이터베이스 적용
+
+![1423](https://user-images.githubusercontent.com/43158428/129831855-c1269532-73df-449d-89dc-34a7ada2a690.JPG)
+
+
 
 
 
@@ -101,13 +106,34 @@ JPA를 이용하는 경우에는 연관 관계의 FATCH속성값은 LAZY로 지�
 ReviewRepository에서 @Query를 이용해서 where절을 지정하게되면 한 번에 review테이블에서 삭제가됨.
 
 (기존에는 where조건절에 member_mid 칼럼을 이용해서 3개의 데이터를 한번에 삭제하는것처럼 보이지만 실제로는 review 테이블에서 3번 반복적으로 실행된 후 m_member 테이블을 삭제함.)
-```
-
-### 테스트는 이런 식으로 작성하시면 됩니다
 
 ```
-test 폴더 아래에 적절한 폴더를 생성후 폴더안에 테스트클래스 작성 후 테스트 실행.
-```
+
+### 업로드 파일 데이터의 처리과정.
+
+  -1 파일 업로드가 되면 <li>태그 내에 태그들이 생성된다.
+  
+  ![1](https://user-images.githubusercontent.com/43158428/129832630-ec13da81-a829-4334-8c81-02ac5e6fe115.JPG)
+
+  -2 Submit을 클릭하면 <form>태그 내에 태그들이 생성된다.
+  
+  ![2](https://user-images.githubusercontent.com/43158428/129832808-1a94276e-d203-4f5e-b894-01aeaea80f3c.JPG)
+
+  
+  -3 MovieController에서 POST 방식으로 전달된 데이터들은 MovieImageDTO로 수집된다.
+  
+  ![3](https://user-images.githubusercontent.com/43158428/129832817-4b451248-04d4-4e33-b424-779b923820f1.JPG)
+
+  
+  -4 MovieService에서 MovieImageDTO들은 Movie 엔티티 객체 내에 MovieImage로 처리된다.
+  
+  ![4](https://user-images.githubusercontent.com/43158428/129832825-44fc801f-36bd-4f56-9a1d-39efa05cdc13.JPG)
+
+  
+  -5 JPA에 의해서 save 처리 후 데이터베이스에 저장된다.
+  
+  ![5](https://user-images.githubusercontent.com/43158428/129832837-ec11eb6e-dbd1-4a35-aaef-3137d8969dda.JPG)
+
 
 
 ## License / 라이센스
