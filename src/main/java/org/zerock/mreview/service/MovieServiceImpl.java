@@ -55,14 +55,14 @@ public class MovieServiceImpl implements MovieService{
     @Override
     public MovieDTO getMovie(Long mno) {
 
-        List<Object[]> result = movieRepository.getMovieWithAll(mno);
+        List<Object[]> result =movieRepository.getMovieWithAll(mno);
 
         Movie movie = (Movie) result.get(0)[0];
 
         List<MovieImage> movieImageList = new ArrayList<>();
 
         result.forEach(arr -> {
-            MovieImage movieImage = (MovieImage)arr[1];
+            MovieImage movieImage = (MovieImage) arr[1];
             movieImageList.add(movieImage);
         });
 
@@ -71,6 +71,7 @@ public class MovieServiceImpl implements MovieService{
 
         return entitiesToDTO(movie, movieImageList, avg, reviewCnt);
     }
+
 
     @Override
     public PageResultDTO<MovieDTO, Object[]> getList(PageRequestDTO requestDTO){
