@@ -48,6 +48,11 @@
 
 ![register](https://user-images.githubusercontent.com/43158428/130179705-292706bb-a48d-4390-8f39-6074a6f8f8e1.JPG)
 
+12. list 페이지 하단 페이지번호 구현
+
+![image](https://user-images.githubusercontent.com/43158428/130185639-5ea9bb46-2d14-432e-8d24-39a07fb90726.png)
+
+
 
 
 
