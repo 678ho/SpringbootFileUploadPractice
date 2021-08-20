@@ -42,6 +42,11 @@
 
 ![1423](https://user-images.githubusercontent.com/43158428/129831855-c1269532-73df-449d-89dc-34a7ada2a690.JPG)
 
+11. list / register 페이지 구현
+
+![list](https://user-images.githubusercontent.com/43158428/130179691-3619b8f8-5770-4f48-a7ca-0d2c8566c5c6.JPG)
+
+![register](https://user-images.githubusercontent.com/43158428/130179705-292706bb-a48d-4390-8f39-6074a6f8f8e1.JPG)
 
 
 
