@@ -52,6 +52,11 @@
 
 ![image](https://user-images.githubusercontent.com/43158428/130185639-5ea9bb46-2d14-432e-8d24-39a07fb90726.png)
 
+13. 영화 상세 정보 페이지
+
+![image](https://user-images.githubusercontent.com/43158428/130188177-e0ef386a-8d51-4449-a203-4cc1cc95429b.png)
+
+
 
 
 
