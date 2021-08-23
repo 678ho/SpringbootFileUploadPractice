@@ -7,13 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReviewDTO
-{
+public class ReviewDTO {
+
     private Long reviewnum;
 
     private Long mno;
@@ -29,4 +28,5 @@ public class ReviewDTO
     private String text;
 
     private LocalDateTime regDate, modDate;
+
 }
