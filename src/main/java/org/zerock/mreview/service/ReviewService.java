@@ -11,36 +11,39 @@ public interface ReviewService {
 
     List<ReviewDTO> getListOfMovie(Long mno);
 
-    Long register(ReviewDTO movieReviewDTO);
+    Long register(ReviewDTO reviewDTO);
 
-    void modify(ReviewDTO movieReviewDTO);
+    void modify(ReviewDTO reviewDTO);
 
     void remove(Long reviewnum);
 
-    default Review dtoToEntity(ReviewDTO movieReviewDTO) {
+    default Review dtoToEntity(ReviewDTO reviewDTO) {
 
-        Review movieReview = Review.builder().reviewnum(movieReviewDTO.getReviewnum()).
-                movie(Movie.builder().mno(movieReviewDTO.getMno()).build())
-                .member(Member.builder().mid(movieReviewDTO.getMid()).build())
-                .grade(movieReviewDTO.getGrade())
-                .text(movieReviewDTO.getText())
+        Review review = Review.builder()
+                .reviewnum(reviewDTO.getReviewnum())
+                .movie(Movie.builder().mno(reviewDTO.getMno()).build())
+                .member(Member.builder().mid(reviewDTO.getMid()).build())
+                .grade(reviewDTO.getGrade())
+                .text(reviewDTO.getText())
                 .build();
-        return movieReview;
+
+        return review;
     }
 
-    default ReviewDTO entityToDto(Review movieReview) {
+    default ReviewDTO entityToDto(Review review) {
 
-        ReviewDTO movieReviewDTO = ReviewDTO.builder().reviewnum(movieReview.getReviewnum())
-                .mno(movieReview.getMovie().getMno())
-                .mid(movieReview.getMember().getMid())
-                .nickname(movieReview.getMember().getNickname())
-                .email(movieReview.getMember().getEmail())
-                .grade(movieReview.getGrade())
-                .text(movieReview.getText())
-                .regDate(movieReview.getRegDate())
-                .modDate(movieReview.getModDate())
+        ReviewDTO reviewDTO = ReviewDTO.builder()
+                .reviewnum(review.getReviewnum())
+                .mno(review.getMovie().getMno())
+                .mid(review.getMember().getMid())
+                .nickname(review.getMember().getNickname())
+                .email(review.getMember().getEmail())
+                .grade(review.getGrade())
+                .text(review.getText())
+                .regDate(review.getRegDate())
+                .modDate(review.getModDate())
                 .build();
-        return movieReviewDTO;
-    }
 
+        return reviewDTO;
+    }
 }

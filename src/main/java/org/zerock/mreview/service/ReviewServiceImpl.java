@@ -1,6 +1,5 @@
 package org.zerock.mreview.service;
 
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ReviewServiceImpl implements ReviewService {
 
-
     private final ReviewRepository reviewRepository;
 
     @Override
@@ -28,33 +26,37 @@ public class ReviewServiceImpl implements ReviewService {
 
         List<Review> result = reviewRepository.findByMovie(movie);
 
-        return result.stream().map(movieReview -> entityToDto(movieReview)).collect(Collectors.toList());
+        return result.stream().map(review -> entityToDto(review)).collect(Collectors.toList());
     }
 
     @Override
-    public Long register(ReviewDTO movieReviewDTO) {
+    public Long register(ReviewDTO reviewDTO) {
 
-        Review movieReview = dtoToEntity(movieReviewDTO);
+        Review review = dtoToEntity(reviewDTO);
 
-        reviewRepository.save(movieReview);
+        reviewRepository.save(review);
 
-        return movieReview.getReviewnum();
+        return review.getReviewnum();
     }
 
     @Override
-    public void modify(ReviewDTO movieReviewDTO) {
-        Optional<Review> result = reviewRepository.findById(movieReviewDTO.getReviewnum());
+    public void modify(ReviewDTO reviewDTO) {
 
-        if(result.isPresent()){
+        Optional<Review> result = reviewRepository.findById(reviewDTO.getReviewnum());
 
-            Review movieReview = result.get();
-            movieReview.changeGrade(movieReviewDTO.getGrade());
-            movieReview.changeText(movieReviewDTO.getText());
+        if (result.isPresent()) {
+
+            Review review = result.get();
+            review.changeGrade(reviewDTO.getGrade());
+            review.changeText(reviewDTO.getText());
+
+            reviewRepository.save(review);
         }
     }
 
     @Override
     public void remove(Long reviewnum) {
+
         reviewRepository.deleteById(reviewnum);
     }
 }
