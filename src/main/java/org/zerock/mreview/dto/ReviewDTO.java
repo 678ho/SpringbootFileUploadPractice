@@ -28,5 +28,5 @@ public class ReviewDTO {
     private String text;
 
     private LocalDateTime regDate, modDate;
-
+    
 }

@@ -22,9 +22,9 @@ public class MovieDTO {
     @Builder.Default
     private List<MovieImageDTO> imageDTOList = new ArrayList<>();
 
-    private double avg;//영화 평균 평점.
+    private double avg;
 
-    private int reviewCnt;//리뷰 수 jps 카운트.
+    private int reviewCnt;
 
     private LocalDateTime regDate;
 

@@ -28,9 +28,9 @@ public class MovieController {
 
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model) {
-        log.info("PageRequestDTO: " + pageRequestDTO);
+         log.info("PageRequestDTO: " + pageRequestDTO);
 
-        model.addAttribute("result", movieService.getList(pageRequestDTO));
+         model.addAttribute("result", movieService.getList(pageRequestDTO));
     }
 
     @PostMapping("/register")

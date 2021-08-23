@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-
 @Service
 @Log4j2
 @RequiredArgsConstructor
@@ -53,6 +52,22 @@ public class MovieServiceImpl implements MovieService{
     }
 
     @Override
+    public PageResultDTO<MovieDTO, Object[]> getList(PageRequestDTO requestDTO) {
+        Pageable pageable = requestDTO.getPageable(Sort.by("mno").descending());
+
+        Page<Object[]> result = movieRepository.getListPage(pageable);
+
+        Function<Object[], MovieDTO> fn = (arr -> entitiesToDTO(
+                (Movie)arr[0],
+                (List<MovieImage>)(Arrays.asList((MovieImage)arr[1])),
+                (Double) arr[2],
+                (Long) arr[3])
+        );
+
+        return new PageResultDTO<>(result, fn);
+    }
+
+    @Override
     public MovieDTO getMovie(Long mno) {
 
         List<Object[]> result =movieRepository.getMovieWithAll(mno);
@@ -71,23 +86,4 @@ public class MovieServiceImpl implements MovieService{
 
         return entitiesToDTO(movie, movieImageList, avg, reviewCnt);
     }
-
-
-    @Override
-    public PageResultDTO<MovieDTO, Object[]> getList(PageRequestDTO requestDTO){
-        Pageable pageable = requestDTO.getPageable(Sort.by("mno").descending());
-
-        Page<Object[]> result = movieRepository.getListPage(pageable);
-
-        Function<Object[], MovieDTO> fn = (arr -> entitiesToDTO(
-                (Movie)arr[0],
-                (List<MovieImage>)(Arrays.asList((MovieImage)arr[1])),
-                (Double)arr[2],
-                (Long)arr[3]
-        ));
-
-        return new PageResultDTO<>(result,fn);
-    }
-
-
 }
