@@ -3,8 +3,6 @@ package org.zerock.mreview.repository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
-import org.springframework.transaction.annotation.Transactional;
 import org.zerock.mreview.entity.Member;
 import org.zerock.mreview.entity.Movie;
 import org.zerock.mreview.entity.Review;
@@ -18,32 +16,26 @@ public class ReviewRepositoryTests {
     @Autowired
     private ReviewRepository reviewRepository;
 
-
-
     @Test
-    public void insertMoviewReviews() {
+    public void insertMovieReviews() {
 
-        //200개의 리뷰를 등록
         IntStream.rangeClosed(1,200).forEach(i -> {
 
-            //영화 번호
-            Long mno = (long)(Math.random()*100) + 1;
+            Long mno = (long)(Math.random() * 100) + 1;
 
-            //리뷰어 번호
-            Long mid  =  ((long)(Math.random()*100) + 1 );
+            Long mid = (long)(Math.random() * 100) + 1;
             Member member = Member.builder().mid(mid).build();
 
             Review movieReview = Review.builder()
                     .member(member)
                     .movie(Movie.builder().mno(mno).build())
-                    .grade((int)(Math.random()* 5) + 1)
-                    .text("이 영화에 대한 느낌..."+i)
+                    .grade((int)(Math.random() * 5) + 1)
+                    .text("이 영화에 대한 느낌..." + i)
                     .build();
 
             reviewRepository.save(movieReview);
         });
     }
-
 
     @Test
     public void testGetMovieReviews() {
@@ -54,12 +46,11 @@ public class ReviewRepositoryTests {
 
         result.forEach(movieReview -> {
 
-            System.out.print(movieReview.getReviewnum());
-            System.out.print("\t"+movieReview.getGrade());
-            System.out.print("\t"+movieReview.getText());
-            System.out.print("\t"+movieReview.getMember().getEmail());
-            System.out.println("---------------------------");
+            System.out.println(movieReview.getReviewnum()
+                    + "\t" + movieReview.getGrade()
+                    + "\t" + movieReview.getText()
+                    + "\t" + movieReview.getMember().getEmail()
+                    + "----------------------------------");
         });
     }
-
 }
