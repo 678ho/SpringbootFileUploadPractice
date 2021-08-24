@@ -17,12 +17,12 @@ public class SampleController {
     }
 
     @GetMapping("/member")
-    public void exAll() {
+    public void exMember() {
         log.info("member......");
     }
 
     @GetMapping("/admin")
-    public void exAll() {
+    public void exAdmin() {
         log.info("exAdmin......");
     }
 }
