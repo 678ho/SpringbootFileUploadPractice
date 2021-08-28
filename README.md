@@ -125,6 +125,10 @@ ReviewRepository에서 @Query를 이용해서 where절을 지정하게되면 한
 
 (기존에는 where조건절에 member_mid 칼럼을 이용해서 3개의 데이터를 한번에 삭제하는것처럼 보이지만 실제로는 review 테이블에서 3번 반복적으로 실행된 후 m_member 테이블을 삭제함.)
 
+7. 회원권한 테스트
+
+100개의 더미 데이터를 추가 시킨후 1~80 USER, 81~90 USER && MANAGER, 91~100 USER, MANAGER, ADMIN 권한 부여
+
 ```
 
 ### 업로드 파일 데이터의 처리과정.
