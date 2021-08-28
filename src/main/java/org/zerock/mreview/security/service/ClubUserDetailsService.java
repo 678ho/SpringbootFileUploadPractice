@@ -44,7 +44,8 @@ public class ClubUserDetailsService implements UserDetailsService {
                 clubMember.getPassword(),
                 clubMember.isFromSocial(),
                 clubMember.getRoleSet().stream().map( role ->
-                        new SimpleGrantedAuthority("ROLE_"+role.name())).collect(Collectors.toSet());
+                        new SimpleGrantedAuthority("ROLE_"+role.name())).collect(Collectors.toSet())
+        );
         clubAuthMemberDTO.setName(clubMember.getName());
         clubAuthMemberDTO.setFromSocial(clubMember.isFromSocial());
 
