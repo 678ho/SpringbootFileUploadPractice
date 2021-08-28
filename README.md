@@ -56,6 +56,9 @@
 
 ![image](https://user-images.githubusercontent.com/43158428/130188177-e0ef386a-8d51-4449-a203-4cc1cc95429b.png)
 
+14. 회원권한 테스트
+
+![image](https://user-images.githubusercontent.com/43158428/131212779-9f94732f-6868-4623-ad5d-495e5bb5a530.png)
 
 
 
