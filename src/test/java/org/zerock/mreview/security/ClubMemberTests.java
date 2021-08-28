@@ -8,6 +8,7 @@ import org.zerock.mreview.entity.ClubMember;
 import org.zerock.mreview.entity.ClubMemberRole;
 import org.zerock.mreview.repository.ClubMemberRepository;
 
+import java.util.Optional;
 import java.util.stream.IntStream;
 
 @SpringBootTest
@@ -41,5 +42,14 @@ public class ClubMemberTests {
 
             repository.save(clubMember);
         });
+    }
+
+    @Test
+    public void testRead() {
+
+        Optional<ClubMember> result = repository.findByEmail("user95@zerock.org", false);
+
+        ClubMember clubMember = result.get();
+        System.out.println(clubMember);
     }
 }
