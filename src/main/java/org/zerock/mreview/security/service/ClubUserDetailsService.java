@@ -1,6 +1,7 @@
 package org.zerock.mreview.security.service;
 
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 
 @Log4j2
 @Service
+@RequiredArgsConstructor
 public class ClubUserDetailsService implements UserDetailsService {
 
 
@@ -49,3 +51,16 @@ public class ClubUserDetailsService implements UserDetailsService {
         return clubAuthMemberDTO;
     }
 }
+/*
+변경사항
+
+ClubMemberRepository를 받을 수 있는 구조로 변경하고 @RequiredArgsConstructor 처리.
+
+username이 실제로 email을 의미하므로 이를 사용해서 findByEmail을 호출
+
+사용자가 존재하지 않으면 예외처리
+
+ClubMember를 UserDetail 타입으로 처리하기 위해서 ClubAuthMemberDTO타입으로 변환
+
+ClubMemberRole은 SimpleGrantedAuthority 변환
+ */
