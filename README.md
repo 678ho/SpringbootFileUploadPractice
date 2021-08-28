@@ -56,9 +56,14 @@
 
 ![image](https://user-images.githubusercontent.com/43158428/130188177-e0ef386a-8d51-4449-a203-4cc1cc95429b.png)
 
-14. 회원권한 테스트
+14. 회원권한 테스트 결과
 
 ![image](https://user-images.githubusercontent.com/43158428/131212779-9f94732f-6868-4623-ad5d-495e5bb5a530.png)
+
+15. 회원 데이터 조회 테스트 결과
+
+![image](https://user-images.githubusercontent.com/43158428/131213035-c67eda93-2df8-44e4-b69e-e45f11db9b41.png)
+
 
 
 
@@ -128,6 +133,10 @@ ReviewRepository에서 @Query를 이용해서 where절을 지정하게되면 한
 7. 회원권한 테스트
 
 100개의 더미 데이터를 추가 시킨후 1~80 USER, 81~90 USER && MANAGER, 91~100 USER, MANAGER, ADMIN 권한 부여
+
+8. 회원 데이터 조회 테스트
+
+사용자의 이메일과 소셜로 추가된 회원 여부를 선택해서 동작. @EntityGraph를 이용해서 left outer join 으로 처리될 수 있도록함.
 
 ```
 
