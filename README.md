@@ -65,6 +65,14 @@
 ![image](https://user-images.githubusercontent.com/43158428/131213035-c67eda93-2df8-44e4-b69e-e45f11db9b41.png)
 
 
+16. 소셜로그인한 회원정보 로그 추출 결과
+
+![image](https://user-images.githubusercontent.com/43158428/131279823-567a79b2-6af9-4196-90e7-143356b94d31.png)
+
+
+17. 소셜로그인한 회원정보 자동 회원가입처리 결과
+
+![image](https://user-images.githubusercontent.com/43158428/131279736-a7b70df0-6088-4064-a6f4-3df18fd32a22.png)
 
 
 
