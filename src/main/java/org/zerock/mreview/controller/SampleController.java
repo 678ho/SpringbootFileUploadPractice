@@ -20,10 +20,7 @@ public class SampleController {
         log.info("exAll..........");
     }
 
-//    @GetMapping("/member")
-//    public void exMember(){
-//        log.info("exMember..........");
-//    }
+
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")
@@ -39,6 +36,16 @@ public class SampleController {
         log.info("-------------------------------");
         log.info(clubAuthMember);
 
+    }
+
+    @PreAuthorize("#clubAuthMember != null && #clubAuthMember.username eq \"678hoa@gmail.com\"")
+    @GetMapping("/exOnly")
+    public String exMemberOnly(@AuthenticationPrincipal ClubAuthMemberDTO clubAuthMember){
+
+        log.info("exMemberOnly.............");
+        log.info(clubAuthMember);
+
+        return "/sample/admin";
     }
 
 }
