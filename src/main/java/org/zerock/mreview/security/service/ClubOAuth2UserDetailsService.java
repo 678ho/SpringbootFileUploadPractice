@@ -40,7 +40,7 @@ public class ClubOAuth2UserDetailsService extends DefaultOAuth2UserService {
 
         OAuth2User oAuth2User =  super.loadUser(userRequest);
 
-        log.info("==============================");
+        log.info("=====================================");
         oAuth2User.getAttributes().forEach((k,v) -> {
             log.info(k +":" + v);
         });
