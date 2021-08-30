@@ -14,20 +14,28 @@ import org.zerock.mreview.security.dto.ClubAuthMemberDTO;
 public class SampleController {
 
     @GetMapping("/all")
-    public void exAll() {
-        log.info("exAl......");
+    public void exAll(){
+        log.info("exAll..........");
+    }
+
+//    @GetMapping("/member")
+//    public void exMember(){
+//        log.info("exMember..........");
+//    }
+
+    @GetMapping("/admin")
+    public void exAdmin(){
+        log.info("exAdmin..........");
     }
 
     @GetMapping("/member")
-    public void exMember(@AuthenticationPrincipal ClubAuthMemberDTO clubAuthMemberDTO) {
-        log.info("exMember");
+    public void exMember(@AuthenticationPrincipal ClubAuthMemberDTO clubAuthMember){
 
-        log.info("-------------------------------------------");
-        log.info(clubAuthMemberDTO);
+        log.info("exMember..........");
+
+        log.info("-------------------------------");
+        log.info(clubAuthMember);
+
     }
 
-    @GetMapping("/admin")
-    public void exAdmin() {
-        log.info("exAdmin......");
-    }
 }
